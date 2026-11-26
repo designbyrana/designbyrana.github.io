@@ -164,25 +164,42 @@ h2.big{font-size:clamp(2.35rem,7.6vw,5.15rem);text-transform:uppercase;font-weig
 .svc h3{font-size:clamp(1.15rem,1.8vw,1.55rem);text-transform:uppercase;letter-spacing:-.03em;font-weight:600}
 .svc p{margin:0;font-size:.95rem;line-height:1.45;color:var(--soft)}
 
-.cmp-tabs{display:flex;flex-wrap:wrap;gap:.4rem 1.4rem;margin:0 0 1.2rem}
-.cmp-tabs button{min-height:44px;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;font-weight:500;color:var(--mute);border-bottom:1px solid transparent;padding:.2rem 0}
-.cmp-tabs button[aria-selected="true"]{color:#2b2b2b;border-color:#2b2b2b}
-.cmp{--pos:54%;margin:0;user-select:none;-webkit-user-select:none}
-.cmp-stage{position:relative;touch-action:pan-y}
-.cmp-frame{position:relative;aspect-ratio:16/10;overflow:hidden;background:#111;container-type:inline-size}
-.cmp-after,.cmp-before img{position:absolute;top:0;left:0;height:100%;width:100cqi;max-width:none;object-fit:cover;pointer-events:none;-webkit-user-drag:none}
-.cmp-before{position:absolute;inset:0 auto 0 0;width:var(--pos);overflow:hidden}
-.cmp-tag{position:absolute;top:.8rem;z-index:2;max-width:46%;background:rgba(0,0,0,.55);color:#fff;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;font-weight:500;line-height:1.35;padding:.4rem .55rem;pointer-events:none}
-.cmp-tag.b{left:.8rem}
-.cmp-tag.a{right:.8rem;text-align:right}
-.cmp-handle{position:absolute;top:0;bottom:0;left:var(--pos);width:4.25rem;transform:translateX(-50%);z-index:3;touch-action:none;cursor:ew-resize;display:flex;align-items:center;justify-content:center}
-.cmp-bar{position:absolute;top:0;bottom:0;left:50%;width:2px;transform:translateX(-50%);background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.45)}
-.cmp-knob{width:48px;height:48px;border-radius:50%;background:#fff;display:grid;place-items:center;box-shadow:0 2px 14px rgba(0,0,0,.28)}
-@media (max-width:640px){
-  .cmp-frame{aspect-ratio:4/5}
-  .cmp-tag{font-size:.6rem;max-width:42%}
+#style,#palettes,#walk{padding-bottom:calc(var(--sec) + 3.4rem)}
+#palettes .pill.solid,#style .pill.solid,#walk .pill.solid{margin-right:3.6rem}
+.pal-layout{display:grid;grid-template-columns:minmax(16rem,.72fr) minmax(0,1.28fr);gap:clamp(1.2rem,3vw,2.6rem);align-items:start}
+.pal-list{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.pal-item{display:grid;grid-template-columns:auto minmax(0,1fr);gap:.75rem;align-items:center;width:100%;text-align:left;padding:.78rem 0;border-bottom:1px solid var(--line);min-height:44px;cursor:pointer}
+.pal-item .swatches{display:flex;gap:0}
+.pal-item i{width:1.15rem;height:1.15rem;display:block;border:1px solid rgba(0,0,0,.08)}
+.pal-item strong{display:block;font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;font-weight:600;color:#2b2b2b}
+.pal-item em{display:block;font-style:normal;font-size:.8rem;color:var(--mute);margin-top:.15rem}
+.pal-item.is-on strong{box-shadow:inset 0 -1px 0 #2b2b2b}
+.pal-stage .ph{position:relative;overflow:hidden;background:#111;aspect-ratio:16/9}
+.pal-stage img{width:100%;height:100%;object-fit:cover;display:block}
+.pal-stage .cap{display:flex;justify-content:space-between;gap:1rem;margin:.75rem 0 0;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;color:var(--mute)}
+.pal-chips{display:flex;flex-wrap:wrap;gap:.55rem 1rem;margin:.9rem 0 .7rem}
+.pal-chip{display:flex;align-items:center;gap:.55rem;min-height:44px;padding:0;border:0;background:none;cursor:pointer;text-align:left}
+.pal-chip span{width:2.15rem;height:2.15rem;border:1px solid rgba(0,0,0,.08);flex:none}
+.pal-chip b{font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;font-weight:500;color:#2b2b2b}
+.pal-note{margin:0 0 1.3rem;max-width:28rem;font-size:.95rem;line-height:1.5;color:var(--soft)}
+@media (max-width:800px){
+  .pal-layout{grid-template-columns:1fr}
+  .pal-list{flex-direction:row;overflow-x:auto;border-top:0;gap:.5rem;padding:0 0 .8rem;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+  .pal-item{width:auto;min-width:min(17.5rem,74%);max-width:82%;border:1px solid var(--line);padding:.75rem .85rem;flex:none}
+  .pal-item.is-on{border-color:#2b2b2b}
+  .pal-stage .ph{aspect-ratio:4/5}
+  .pal-chips,.pal-note,.pal-stage .cap{padding-right:3.6rem}
 }
 
+/* Background music toggle */
+.bgm-toggle{position:fixed;right:max(1.05rem,env(safe-area-inset-right));bottom:max(1.05rem,env(safe-area-inset-bottom));z-index:60;width:48px;height:48px;border-radius:50%;background:#2b2b2b;color:#fff;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.22);transition:transform .25s,background .25s,opacity .25s}
+.bgm-toggle:hover{transform:scale(1.04)}
+.bgm-toggle svg{width:20px;height:20px;display:block}
+.bgm-toggle .ic-on{display:none}
+.bgm-toggle.is-on .ic-off{display:none}
+.bgm-toggle.is-on .ic-on{display:block}
+.bgm-toggle.is-on{box-shadow:0 8px 24px rgba(0,0,0,.28)}
+@media (prefers-reduced-motion:reduce){.bgm-toggle{transition:none}}
 .steps-scroller{--inset:var(--inset);display:flex;gap:1.25rem;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:var(--inset);padding:0 var(--inset) .4rem;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:#111 transparent}
 .steps-scroller:focus-visible{outline-offset:-2px}
 .steps-scroller::-webkit-scrollbar{height:2px}
@@ -282,6 +299,7 @@ footer p{font-size:.92rem;opacity:.78;max-width:20rem;margin:.9rem 0 0}
 <noscript><style>.reveal,.reveal-img{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body>
+<!-- PREVIEW ONLY — not published. Option b: Palettes. -->
 <a class="visually-hidden" href="#projects">Skip to work</a>
 
 <header class="nav" id="nav">
@@ -301,7 +319,7 @@ footer p{font-size:.92rem;opacity:.78;max-width:20rem;margin:.9rem 0 0}
     <li><a href="#projects">Work</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
-    <li><a href="#compare">Compare</a></li>
+    <li><a href="#palettes">Palettes</a></li>
     <li><a href="#process">Process</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -436,29 +454,20 @@ footer p{font-size:.92rem;opacity:.78;max-width:20rem;margin:.9rem 0 0}
   </div>
 </section>
 
-<section id="compare">
+<section id="palettes">
   <div class="wrap">
     <div class="sec-head">
-      <h2 class="big reveal">Compare</h2>
-      <p class="reveal" style="--d:.08s">Two moods, one studio — drag to compare.</p>
+      <h2 class="big reveal">Palettes</h2>
+      <p class="reveal" style="--d:.08s">Tap a project to open its colours and materials, drawn from the photographs. A way to find the atmosphere you want, then talk it through.</p>
     </div>
-    <div class="cmp-tabs reveal" role="tablist" aria-label="Compare styles">
-      <button type="button" role="tab" id="cmpTab0" aria-selected="true" aria-controls="cmpStage">Industrial / Modern</button>
-      <button type="button" role="tab" id="cmpTab1" aria-selected="false" aria-controls="cmpStage">Modern / Classic</button>
-      <button type="button" role="tab" id="cmpTab2" aria-selected="false" aria-controls="cmpStage">Industrial / Classic</button>
-    </div>
-    <div class="cmp reveal" id="cmp" style="--pos:54%">
-      <div class="cmp-stage" id="cmpStage">
-        <div class="cmp-frame">
-          <img class="cmp-after" id="cmpRightImg" src="images/citra-lake-1.jpg" alt="Modern and minimal living room at Citra Lake Sawangan" width="1536" height="864" loading="lazy" decoding="async">
-          <div class="cmp-before"><img id="cmpLeftImg" src="images/bkt-1.jpg" alt="Industrial interior at BKT Foodmarket" width="1600" height="900" loading="lazy" decoding="async"></div>
-          <span class="cmp-tag b" id="cmpLeft">Industrial · BKT Foodmarket</span>
-          <span class="cmp-tag a" id="cmpRight">Modern &amp; Minimal · Citra Lake Sawangan</span>
-        </div>
-        <div class="cmp-handle" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-valuenow="54" aria-orientation="horizontal" aria-label="Drag to compare styles">
-          <span class="cmp-bar"></span>
-          <span class="cmp-knob" aria-hidden="true"><svg width="22" height="14" viewBox="0 0 22 14" fill="none"><path d="M7 1 L1 7 L7 13 M15 1 L21 7 L15 13" stroke="#2b2b2b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        </div>
+    <div class="pal-layout">
+      <div class="pal-list reveal" role="listbox" aria-label="Project palettes" id="palList"></div>
+      <div class="pal-stage reveal" style="--d:.08s">
+        <div class="ph"><img id="palImg" src="images/pantai-mutiara-1.jpg" alt="Residence Pantai Mutiara" width="1600" height="1200"></div>
+        <div class="cap"><span id="palName">Residence Pantai Mutiara</span><span id="palMeta">2024 · North Jakarta</span></div>
+        <div class="pal-chips" id="palChips"></div>
+        <p class="pal-note" id="palNote"></p>
+        <a class="pill solid" id="palWa" href="https://wa.me/6287875709777" target="_blank" rel="noopener">Ask about this palette</a>
       </div>
     </div>
   </div>
@@ -515,7 +524,7 @@ footer p{font-size:.92rem;opacity:.78;max-width:20rem;margin:.9rem 0 0}
         <p>Consider it designed. Transforming spaces since 2020.</p>
       </div>
       <div class="f-links">
-        <div><h2>Explore</h2><ul><li><a href="#projects">Work</a></li><li><a href="#about">About</a></li><li><a href="#services">Services</a></li><li><a href="#compare">Compare</a></li><li><a href="#process">Process</a></li></ul></div>
+        <div><h2>Explore</h2><ul><li><a href="#projects">Work</a></li><li><a href="#about">About</a></li><li><a href="#services">Services</a></li><li><a href="#palettes">Palettes</a></li><li><a href="#process">Process</a></li></ul></div>
         <div><h2>Connect</h2><ul><li><a href="mailto:contact.rana11@gmail.com">Email</a></li><li><a href="tel:+6287875709777">Call</a></li><li><a href="https://wa.me/6287875709777" target="_blank" rel="noopener">WhatsApp</a></li><li><a href="https://www.instagram.com/design.by.rana/" target="_blank" rel="noopener">Instagram</a></li><li><a href="#contact">Enquire</a></li></ul></div>
       </div>
     </div>
@@ -537,6 +546,30 @@ footer p{font-size:.92rem;opacity:.78;max-width:20rem;margin:.9rem 0 0}
   </figure>
   <button class="next" id="lbNext" type="button" aria-label="Next image">→</button>
 </div>
+
+<!--
+  Background music
+  Title: On A Breeze
+  Artist: John Bartmann
+  Album: Softly, Boldly, With A Piano (released 2 March 2021)
+  Source: https://freemusicarchive.org/music/John_Bartmann/softly-boldly-with-a-piano/on-a-breeze/
+  License: CC0 1.0 Universal
+  License URL: https://creativecommons.org/publicdomain/zero/1.0/
+  File: audio/ambient.mp3
+-->
+<audio id="bgm" preload="none" loop playsinline webkit-playsinline>
+  <source src="audio/ambient.mp3" type="audio/mpeg">
+</audio>
+<button type="button" class="bgm-toggle" id="bgmToggle" aria-pressed="false" aria-label="Play background music" title="Background music">
+  <svg class="ic-off" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M9 18V6l10-2v12"/>
+    <circle cx="6" cy="18" r="2.4"/>
+    <circle cx="16" cy="16" r="2.4"/>
+  </svg>
+  <svg class="ic-on" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+    <path d="M9 18V6l10-2v12a2.4 2.4 0 1 1-1.7-2.3V7.3L10.5 8.2V18a2.4 2.4 0 1 1-1.5-.2z"/>
+  </svg>
+</button>
 
 <script>
 (function(){
@@ -572,7 +605,7 @@ footer p{font-size:.92rem;opacity:.78;max-width:20rem;margin:.9rem 0 0}
   function onScroll(){
     nav.classList.toggle('scrolled', (window.scrollY||0)>40);
     var y=(window.scrollY||0)+90, current=null;
-    $$('#projects,#about,#services,#compare,#process,#contact').forEach(function(sec){
+    $$('#projects,#about,#services,#palettes,#process,#contact').forEach(function(sec){
       if(sec.offsetTop<=y) current=sec.id;
     });
     $$('a', menu).forEach(function(a){
@@ -853,77 +886,102 @@ footer p{font-size:.92rem;opacity:.78;max-width:20rem;margin:.9rem 0 0}
     }
   })();
 
-  (function(){
-    var pairs=[
-      {leftImg:'images/bkt-1.jpg',rightImg:'images/citra-lake-1.jpg',left:'Industrial · BKT Foodmarket',right:'Modern & Minimal · Citra Lake Sawangan',label:'Industrial and Modern & Minimal'},
-      {leftImg:'images/pondok-indah-1.jpg',rightImg:'images/pantai-mutiara-1.jpg',left:'Modern & Minimal · Residence Pondok Indah',right:'Classic & Luxury · Residence Pantai Mutiara',label:'Modern & Minimal and Classic & Luxury'},
-      {leftImg:'images/puri-bintaro-1.jpg',rightImg:'images/citra-garden-bintaro-1.jpg',left:'Industrial · Residence Puri Bintaro',right:'Classic & Luxury · Citra Garden Bintaro',label:'Industrial and Classic & Luxury'}
+(function(){
+    var pals=[
+      {name:'Residence Pantai Mutiara',meta:'2024 · North Jakarta · Classic & Luxury',img:'images/pantai-mutiara-1.jpg',imgs:['images/pantai-mutiara-1.jpg','images/pantai-mutiara-3.jpg','images/pantai-mutiara-4.jpg'],note:'Textured stone-wash walls, dark timber, linen and black-framed glass. A modern luxury room with a tropical quiet to it.',chips:[{c:'#ab9a8e',l:'Warm stone'},{c:'#6d5e53',l:'Taupe plaster'},{c:'#291e17',l:'Espresso timber'},{c:'#978578',l:'Clay'}]},
+      {name:'BKT Foodmarket',meta:'2021 · East Jakarta · Industrial',img:'images/bkt-1.jpg',imgs:['images/bkt-1.jpg','images/bkt-2.jpg','images/bkt-3.jpg'],note:'Fair-faced concrete, a slatted timber screen, steel and glass — a public F&B space designed around an industrial concept.',chips:[{c:'#575756',l:'Concrete'},{c:'#262522',l:'Charcoal'},{c:'#9d8f6f',l:'Warm timber'},{c:'#6b768f',l:'Dusk steel'}]},
+      {name:'Residence Puri Bintaro',meta:'2022 · South Tangerang · Industrial',img:'images/puri-bintaro-1.jpg',imgs:['images/puri-bintaro-1.jpg','images/puri-bintaro-2.jpg','images/puri-bintaro-3.jpg'],note:'Textured plaster, dark timber and leather, lit by a slim black pendant. An industrial house kept close and quiet.',chips:[{c:'#6f6050',l:'Warm taupe'},{c:'#2b221a',l:'Dark wood'},{c:'#867564',l:'Plaster'},{c:'#534638',l:'Bronze'}]},
+      {name:'Citra Lake Sawangan',meta:'2022 · West Java · Modern & Minimal',img:'images/citra-lake-1.jpg',imgs:['images/citra-lake-1.jpg','images/citra-lake-2.jpg','images/citra-lake-3.jpg'],note:'Pale plaster, light oak and soft linen, with a quiet stone floor. Scandinavian and modern design, held in one bright room.',chips:[{c:'#e2dbd4',l:'Ivory'},{c:'#c3bbae',l:'Warm grey'},{c:'#b2a99b',l:'Stone'},{c:'#998b77',l:'Oak'}]},
+      {name:'Residence Pondok Indah',meta:'2023 · South Jakarta · Modern & Minimal',img:'images/pondok-indah-1.jpg',imgs:['images/pondok-indah-1.jpg','images/pondok-indah-2.jpg','images/pondok-indah-3.jpg'],note:'Open timber wardrobe, soft blush upholstery and warm wood floors — a residence that blends minimalist and modern design.',chips:[{c:'#c8b19a',l:'Blush oak'},{c:'#b39f8b',l:'Sand'},{c:'#8c735e',l:'Walnut'},{c:'#705c4b',l:'Bronze'}]},
+      {name:'Citra City Sentul II',meta:'2024 · West Java · Modern & Minimal',img:'images/sentul-2-2.jpg',imgs:['images/sentul-2-1.jpg','images/sentul-2-2.jpg','images/sentul-2-3.jpg'],note:'Vertical timber cladding, woven pendants, pale stone and tropical planting. Modern design combined with a tropical theme.',chips:[{c:'#aa9f93',l:'Greige'},{c:'#dddadd',l:'Soft white'},{c:'#978876',l:'Taupe'},{c:'#604b36',l:'Walnut'}]},
+      {name:'Citra Garden Bintaro',meta:'2023 · South Tangerang · Classic & Luxury',img:'images/citra-garden-bintaro-1.jpg',imgs:['images/citra-garden-bintaro-1.jpg','images/citra-8-1.jpg','images/citra-garden-bmw-1.jpg'],note:'Wall panelling, a moulded ceiling line, veined stone and tailored upholstery. Modern and classic design combined for a more formal room.',chips:[{c:'#ebe3d6',l:'Ivory'},{c:'#d1c8b5',l:'Champagne'},{c:'#b2a996',l:'Greige'},{c:'#69604e',l:'Bronze'}]},
+      {name:'Brutal Minimalism Kitchen',meta:'2025 · Personal concept',img:'images/brutal-kitchen-1.jpg',imgs:['images/brutal-kitchen-1.jpg','images/brutal-kitchen-2.jpg','images/brutal-kitchen-3.jpg'],note:'A mock design concept — not a commission. Dark stone, raw metal, and a single chiselled block. A kitchen driven by texture and restraint.',chips:[{c:'#1b1d19',l:'Charcoal'},{c:'#374136',l:'Olive stone'},{c:'#646252',l:'Moss'},{c:'#9d9c8a',l:'Pewter'}]}
     ];
-    var cmp=$('#cmp'), stage=$('#cmpStage'), frame=$('.cmp-frame', cmp), leftImg=$('#cmpLeftImg'), rightImg=$('#cmpRightImg'), handle=$('.cmp-handle', cmp);
-    var tabs=$$('.cmp-tabs button');
-    function pos(){var n=parseFloat(cmp.style.getPropertyValue('--pos'));return isNaN(n)?54:n}
-    function setPos(pct){
-      pct=Math.max(0,Math.min(100,pct));
-      cmp.style.setProperty('--pos',pct+'%');
-      handle.setAttribute('aria-valuenow',String(Math.round(pct)));
+    var list=$('#palList'), img=$('#palImg'), chips=$('#palChips'), note=$('#palNote'), wa=$('#palWa');
+    var cur=0, shot=0;
+    function paint(i, s){
+      cur=i; shot=(s==null?0:s);
+      var p=pals[i];
+      var src=p.imgs[shot]||p.img;
+      img.src=src; img.alt=p.name;
+      $('#palName').textContent=p.name;
+      $('#palMeta').textContent=p.meta;
+      note.textContent=p.note;
+      chips.innerHTML=p.chips.map(function(ch,n){
+        return '<button type="button" class="pal-chip" data-n="'+n+'" aria-label="'+ch.l+'"><span style="background:'+ch.c+'"></span><b>'+ch.l+'</b></button>';
+      }).join('');
+      $$('.pal-item',list).forEach(function(b,n){b.classList.toggle('is-on',n===i);b.setAttribute('aria-selected',n===i?'true':'false')});
+      var msg='Hello rana., I was looking at the palettes on the site and would like to talk about the atmosphere of '+p.name+'.';
+      wa.href='https://wa.me/6287875709777?text='+encodeURIComponent(msg);
     }
-    function fromX(x){var r=frame.getBoundingClientRect();if(!r.width)return pos();return ((x-r.left)/r.width)*100}
-    function fit(){leftImg.style.width=frame.clientWidth+'px';leftImg.style.height=frame.clientHeight+'px'}
-    fit();
-    if(window.ResizeObserver) new ResizeObserver(fit).observe(frame);
-    else window.addEventListener('resize',fit);
-    function showPair(i){
-      var p=pairs[i];
-      leftImg.src=p.leftImg; rightImg.src=p.rightImg;
-      $('#cmpLeft').textContent=p.left; $('#cmpRight').textContent=p.right;
-      handle.setAttribute('aria-label','Drag to compare '+p.label);
-      tabs.forEach(function(t,n){t.setAttribute('aria-selected',n===i?'true':'false')});
-      fit();
-    }
-    tabs.forEach(function(t,i){t.addEventListener('click',function(){showPair(i)})});
-    var pid=null;
-    stage.addEventListener('pointerdown',function(e){
-      if(e.pointerType==='touch'||e.button!==0) return;
-      pid=e.pointerId; try{stage.setPointerCapture(pid)}catch(err){}
-      setPos(fromX(e.clientX)); e.preventDefault();
+    pals.forEach(function(p,i){
+      var b=document.createElement('button');
+      b.type='button'; b.className='pal-item'+(i===0?' is-on':''); b.setAttribute('role','option');
+      b.setAttribute('aria-selected',i===0?'true':'false');
+      b.innerHTML='<span class="swatches">'+p.chips.map(function(ch){return '<i style="background:'+ch.c+'"></i>'}).join('')+'</span><span><strong>'+p.name+'</strong><em>'+p.meta+'</em></span>';
+      b.addEventListener('click',function(){paint(i,0)});
+      list.appendChild(b);
     });
-    stage.addEventListener('pointermove',function(e){if(pid==null||e.pointerId!==pid)return; setPos(fromX(e.clientX))});
-    function endP(e){if(pid==null||(e&&e.pointerId!=null&&e.pointerId!==pid))return; pid=null}
-    stage.addEventListener('pointerup',endP);
-    stage.addEventListener('pointercancel',endP);
-    var touch=null;
-    stage.addEventListener('touchstart',function(e){
-      if(e.touches.length!==1) return;
-      var t=e.touches[0];
-      touch={id:t.identifier,x:t.clientX,y:t.clientY,drag:false};
-    },{passive:true});
-    stage.addEventListener('touchmove',function(e){
-      if(!touch) return;
-      var t=null;
-      for(var i=0;i<e.touches.length;i++) if(e.touches[i].identifier===touch.id) t=e.touches[i];
-      if(!t) return;
-      var dx=t.clientX-touch.x, dy=t.clientY-touch.y;
-      if(!touch.drag){
-        if(Math.abs(dx)<8&&Math.abs(dy)<8) return;
-        if(Math.abs(dy)>Math.abs(dx)){touch=null;return}
-        touch.drag=true;
-      }
-      e.preventDefault();
-      setPos(fromX(t.clientX));
-    },{passive:false});
-    function endT(){touch=null}
-    stage.addEventListener('touchend',endT);
-    stage.addEventListener('touchcancel',endT);
-    handle.addEventListener('keydown',function(e){
-      var step=e.shiftKey?12:4, now=pos();
-      if(e.key==='ArrowLeft'){e.preventDefault();setPos(now-step)}
-      else if(e.key==='ArrowRight'){e.preventDefault();setPos(now+step)}
-      else if(e.key==='Home'){e.preventDefault();setPos(0)}
-      else if(e.key==='End'){e.preventDefault();setPos(100)}
+    chips.addEventListener('click',function(e){
+      var btn=e.target.closest('.pal-chip'); if(!btn) return;
+      var n=parseInt(btn.getAttribute('data-n'),10);
+      var imgs=pals[cur].imgs;
+      paint(cur, n%imgs.length);
     });
+    paint(0,0);
   })();
 
-  $('#form').addEventListener('submit', function(e){
+  (function(){
+    var audio=$('#bgm'), btn=$('#bgmToggle');
+    if(!audio||!btn) return;
+    var KEY='rana-bgm';
+    var fading=null, TARGET=0.32;
+    function setUI(on){
+      btn.classList.toggle('is-on',on);
+      btn.setAttribute('aria-pressed',on?'true':'false');
+      btn.setAttribute('aria-label',on?'Pause background music':'Play background music');
+    }
+    function fadeTo(target,ms,done){
+      if(reduceMotion()){ try{audio.volume=target}catch(err){} if(done)done(); return; }
+      var start=0;
+      try{start=audio.volume}catch(err){start=target}
+      var t0=performance.now();
+      if(fading) cancelAnimationFrame(fading);
+      (function step(now){
+        var p=Math.min(1,(now-t0)/ms);
+        try{audio.volume=start+(target-start)*p}catch(err){}
+        if(p<1) fading=requestAnimationFrame(step);
+        else if(done) done();
+      })(t0);
+    }
+    function persist(v){ try{localStorage.setItem(KEY,v)}catch(err){} }
+    function play(){
+      try{audio.volume=reduceMotion()?TARGET:0}catch(err){}
+      var pr=audio.play();
+      function ok(){
+        if(!reduceMotion()) fadeTo(TARGET,900);
+        setUI(true); persist('on');
+      }
+      if(pr&&pr.then) pr.then(ok).catch(function(){ setUI(false); });
+      else ok();
+    }
+    function pause(){
+      fadeTo(0,500,function(){ try{audio.pause()}catch(err){} });
+      setUI(false); persist('off');
+    }
+    btn.addEventListener('click',function(){ if(audio.paused) play(); else pause(); });
+    var want=false;
+    try{want=localStorage.getItem(KEY)==='on'}catch(err){}
+    if(want){
+      play();
+      if(audio.paused){
+        function unlock(){ play(); document.removeEventListener('pointerdown',unlock); }
+        document.addEventListener('pointerdown',unlock,{once:true,passive:true});
+      }
+    }
+  })();
+
+    $('#form').addEventListener('submit', function(e){
     e.preventDefault();
     var f=e.target, m=$('#formmsg');
     if(!f.name.value.trim() || !/^\S+@\S+\.\S+$/.test(f.email.value) || !f.msg.value.trim()){
